@@ -9,8 +9,10 @@ type Props = {
 };
 
 const TextView = ({ text, extraText }: Props) => {
+  const numberOfLines = 1;
+
   return (
-    <Text numberOfLines={1} style={styles.text}>
+    <Text numberOfLines={numberOfLines} style={styles.text}>
       {text} {extraText}
     </Text>
   );
