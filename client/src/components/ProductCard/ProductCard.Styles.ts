@@ -20,4 +20,10 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: sizes[1] / 2,
   },
+  bottomContainer: {
+    flexDirection: 'row',
+  },
+  price: {
+    flex: 1,
+  },
 });

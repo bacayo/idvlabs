@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native';
+import { View, Image, Pressable } from 'react-native';
 import React from 'react';
 import TextView from '../Views/TextView';
 
@@ -8,17 +8,23 @@ type Props = {
   image: string;
   title: string;
   price: string;
+  product_stock: number;
 };
 
 const ProductCard = (props: Props) => {
   return (
-    <View style={styles.card}>
+    <Pressable style={styles.card}>
       <View>
         <Image style={styles.image} source={{ uri: props.image }} />
       </View>
       <TextView text={props.title} />
-      <TextView text={props.price} extraText="TL" />
-    </View>
+      <View style={styles.bottomContainer}>
+        <View style={styles.price}>
+          <TextView text={props.price + ' TL'} />
+        </View>
+        <TextView text={'Stock: ' + props.product_stock} />
+      </View>
+    </Pressable>
   );
 };
 
