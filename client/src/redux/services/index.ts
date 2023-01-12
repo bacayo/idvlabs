@@ -60,3 +60,31 @@ export const deleteProductAsync = createAsyncThunk(
     return response.data;
   },
 );
+
+// add product
+
+export const addProductAsync = createAsyncThunk(
+  'addProductAsync',
+  async (
+    data: {
+      title: string;
+      price: string;
+      description: string;
+      image: string;
+      category: string;
+      product_stock: number;
+    },
+    thunkAPI,
+  ) => {
+    const response = await axios.post('products', {
+      title: data.title,
+      price: data.price,
+      description: data.description,
+      image: data.image,
+      category: data.category,
+      product_stock: data.product_stock,
+    });
+    thunkAPI.dispatch(getAllProductsAsync());
+    return response.data;
+  },
+);

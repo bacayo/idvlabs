@@ -4,6 +4,7 @@ import React from 'react';
 import ButtonCard from '../ButtonCard';
 import TextView from '../Views/TextView';
 import styles from './MessageBoxModal.Styles';
+import { strings } from '../../infrastructure/strings/strings';
 
 type Props = {
   modalVisible: boolean;
@@ -22,14 +23,18 @@ const MessageBoxModal = ({ modalVisible, setModalVisible, onPress }: Props) => {
       }}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <TextView text={'This product will be deleted'} />
+          <TextView text={strings.deleteMessage} />
           <View style={styles.buttonsWrapper}>
             <View style={styles.buttonContainer}>
-              <ButtonCard title="Confirm" danger={true} onPress={onPress} />
+              <ButtonCard
+                title={strings.confirm}
+                danger={true}
+                onPress={onPress}
+              />
             </View>
             <View style={styles.buttonContainer}>
               <ButtonCard
-                title="Cancel"
+                title={strings.cancel}
                 onPress={() => {
                   setModalVisible(!modalVisible);
                 }}

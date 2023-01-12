@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: colors.brand.muted,
     margin: space[1],
-    padding: 4,
+    padding: space[1],
     borderRadius: sizes[0],
   },
   image: {

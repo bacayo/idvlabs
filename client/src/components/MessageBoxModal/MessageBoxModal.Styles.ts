@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../infrastructure/theme/colors';
+import { sizes } from '../../infrastructure/theme/sizes';
 import { space } from '../../infrastructure/theme/spacing';
 
 export default StyleSheet.create({
@@ -10,9 +11,9 @@ export default StyleSheet.create({
     marginTop: space[3],
   },
   modalView: {
-    marginHorizontal: 40,
-    borderRadius: 10,
-    padding: 35,
+    marginHorizontal: space[4],
+    borderRadius: sizes[1],
+    padding: space[4],
     alignItems: 'center',
     elevation: 5,
     backgroundColor: colors.bg.secondary,
@@ -24,6 +25,6 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    marginHorizontal: 5,
+    marginHorizontal: space[1],
   },
 });

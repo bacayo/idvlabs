@@ -9,6 +9,7 @@ import { RootStackParamList } from '../../types/nav.types';
 import { useAppDispatch } from '../../hooks/hooks';
 import { deleteProductAsync } from '../../redux/services';
 import MessageBoxModal from '../MessageBoxModal';
+import { strings } from '../../infrastructure/strings/strings';
 
 type Props = {
   image: string;
@@ -50,7 +51,7 @@ const ProductCard = (props: Props) => {
         <View style={styles.price}>
           <TextView text={props.price + ' TL'} />
         </View>
-        <TextView text={'Stock: ' + props.product_stock} />
+        <TextView text={strings.stock + props.product_stock} />
       </View>
       <MessageBoxModal
         onPress={deleteProduct}

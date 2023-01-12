@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import { RootStackParamList } from './types/nav.types';
 import DetailScreen from './screens/DetailScreen';
+import AddProductScreen from './screens/AddProductScreen';
 
 const Router = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -25,6 +26,13 @@ const Router = () => {
           options={({ route }) => ({
             headerTitle: route.params.title,
           })}
+        />
+        <Stack.Screen
+          name="AddProduct"
+          component={AddProductScreen}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
