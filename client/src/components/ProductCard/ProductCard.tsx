@@ -1,11 +1,14 @@
 import { View, Image, Pressable } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import TextView from '../Views/TextView';
 
 import styles from './ProductCard.Styles';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/nav.types';
+import { useAppDispatch } from '../../hooks/hooks';
+import { deleteProductAsync } from '../../redux/services';
+import MessageBoxModal from '../MessageBoxModal';
 
 type Props = {
   image: string;
@@ -16,15 +19,29 @@ type Props = {
 };
 
 const ProductCard = (props: Props) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const dispatch = useAppDispatch();
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const handleNavigation = () => {
+    console.log(props.id);
     navigation.navigate('Detail', { id: props.id, title: props.title });
   };
 
+  // //* delete product on long press
+  const deleteProduct = () => {
+    dispatch(deleteProductAsync(props.id));
+  };
+
   return (
-    <Pressable onPress={handleNavigation} style={styles.card}>
+    <Pressable
+      onLongPress={() => {
+        setModalVisible(true);
+      }}
+      onPress={handleNavigation}
+      style={styles.card}>
       <View>
         <Image style={styles.image} source={{ uri: props.image }} />
       </View>
@@ -35,6 +52,11 @@ const ProductCard = (props: Props) => {
         </View>
         <TextView text={'Stock: ' + props.product_stock} />
       </View>
+      <MessageBoxModal
+        onPress={deleteProduct}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </Pressable>
   );
 };
