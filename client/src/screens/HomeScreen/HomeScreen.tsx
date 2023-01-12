@@ -7,6 +7,8 @@ import ProductCard from '../../components/ProductCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { getAllProductsAsync } from '../../redux/services';
 import { Products } from '../../types/types';
+import Error from '../../components/Error';
+import Loading from '../../components/Loading';
 
 const HomeScreen = () => {
   const renderProducts: ListRenderItem<Products> = ({ item }) => (
@@ -14,11 +16,20 @@ const HomeScreen = () => {
   );
 
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector(state => state.products);
+  const { products, isLoading, productsError } = useAppSelector(
+    state => state.products,
+  );
 
   useEffect(() => {
     dispatch(getAllProductsAsync());
   }, [dispatch]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (productsError) {
+    return <Error />;
+  }
 
   return (
     <View style={styles.container}>

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAllProductsAsync } from '../services';
 
 import { Products } from '../../types/types';
@@ -23,10 +23,13 @@ const productsSlice = createSlice({
     builder.addCase(getAllProductsAsync.pending, state => {
       state.isLoading = true;
     });
-    builder.addCase(getAllProductsAsync.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.products = action.payload;
-    });
+    builder.addCase(
+      getAllProductsAsync.fulfilled,
+      (state, action: PayloadAction<Products[]>) => {
+        state.isLoading = false;
+        state.products = action.payload;
+      },
+    );
     builder.addCase(getAllProductsAsync.rejected, (state, action) => {
       state.isLoading = false;
       state.productsError = action.error.message;
