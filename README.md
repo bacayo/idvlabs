@@ -2,9 +2,9 @@
 
 ### idvlabs test case
 
-backend-> django and django_rest framework
-database -> django has built in database called SQLite
-fronten-> react-native,redux-toolkit
+###backend written with django and django rest framework
+### django has built in database called SQLite
+### frontend written with react-native,redux-toolkit
 
 
 to run server
