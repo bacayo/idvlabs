@@ -16,4 +16,7 @@ export default StyleSheet.create({
     color: colors.text.inverse,
     padding: space[1],
   },
+  buttonDanger: {
+    backgroundColor: colors.ui.error,
+  },
 });

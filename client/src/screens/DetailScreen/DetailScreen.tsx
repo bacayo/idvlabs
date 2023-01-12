@@ -40,6 +40,7 @@ const DetailScreen = ({ route }: Props) => {
         product_stock: Number(stock),
       }),
     );
+    setStock('');
   };
 
   useEffect(() => {

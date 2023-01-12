@@ -50,3 +50,13 @@ export const updateProductAsync = createAsyncThunk(
     return response.data;
   },
 );
+
+//delete product
+export const deleteProductAsync = createAsyncThunk(
+  'deleteProductAsync',
+  async (id: number, thunkAPI) => {
+    const response = await axios.delete(`products/${id}/`);
+    thunkAPI.dispatch(getAllProductsAsync());
+    return response.data;
+  },
+);
